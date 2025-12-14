@@ -1,0 +1,11 @@
+specify the following tags categories 
+
+e.g 
+1. Paragraph tags // Blocklevel 
+2. h4 // Blocklevel
+3. spam //inlinelevel 
+4. italing tags //inlinelevel
+5. Strong tags - <strong></strong> // inlinelevel
+6. div tag // Blocklevel 
+7 emphasis tag inlinelevel
+8. a tag //inline 
