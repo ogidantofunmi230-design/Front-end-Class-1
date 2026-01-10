@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS Practice</title>
+
+    <style>
+
+        /* ELEMENT SELECTOR */
+        p {
+            font-size: 16px;
+            line-height: 1.6;
+        }
+
+        /* CLASS SELECTOR */
+        .info {
+            font-family: Arial, sans-serif;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        /* ID SELECTOR */
+        #main-title {
+            text-align: center;
+            font-size: 30px;
+            font-weight: 700;
+        }
+
+        /* GROUPING SELECTOR */
+        h2, h3 {
+            text-align: center;
+            font-family: Verdana;
+        }
+
+        /* SPECIFICITY DEMO */
+        p {
+            color: green;
+        }
+
+        .info {
+            color: blue;
+        }
+
+        #special {
+            color: red;
+        }
+
+    </style>
+</head>
+
+<body>
+
+    <h1 id="main-title">CSS Styling Practice</h1>
+
+    <h2>Selectors</h2>
+
+    <p>This paragraph uses only element selector.</p>
+
+    <p class="info">This paragraph uses class selector.</p>
+
+    <p id="special" class="info">This paragraph uses ID, class and element. ID wins.</p>
+
+    <h3>Text and Fonts</h3>
+
+    <p style="text-align: center;">
+        This text is centered using text-align.
+    </p>
+
+    <p class="info">
+        This text is bold, underlined, and uses Arial font-family.
+    </p>
+
+</body>
+</html>

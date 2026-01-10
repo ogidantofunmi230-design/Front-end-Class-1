@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spotify® Student Verification</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .sheetid-badge {
+            display: inline-block;
+            background-color: #121212;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            letter-spacing: 0.5px;
+        }
+        
+        h1 {
+            color: #1DB954;
+            font-size: 28px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 16px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+        
+        .verification-box {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 20px;
+        }
+        
+        .form-group {
+            margin-bottom: 22px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+        
+        .required::after {
+            content: "*";
+            color: #e74c3c;
+            margin-left: 3px;
+        }
+        
+        select, input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 6px;
+            font-size: 16px;
+            transition: border 0.3s;
+        }
+        
+        select:focus, input:focus {
+            outline: none;
+            border-color: #1DB954;
+        }
+        
+        .error {
+            border-color: #e74c3c !important;
+        }
+        
+        .error-message {
+            color: #e74c3c;
+            font-size: 13px;
+            margin-top: 5px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .error-message i {
+            margin-right: 5px;
+        }
+        
+        .dob-group {
+            display: flex;
+            gap: 10px;
+        }
+        
+        .dob-select {
+            flex: 1;
+        }
+        
+        .checkbox-group {
+            margin: 25px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 6px;
+        }
+        
+        .checkbox-container {
+            display: flex;
+            align-items: flex-start;
+        }
+        
+        .checkbox-container input {
+            width: auto;
+            margin-right: 10px;
+            margin-top: 3px;
+        }
+        
+        .checkbox-label {
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .privacy-note {
+            font-size: 12px;
+            color: #666;
+            margin-top: 8px;
+            padding-left: 24px;
+        }
+        
+        .verify-btn {
+            background-color: #1DB954;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            padding: 16px;
+            font-size: 18px;
+            font-weight: 700;
+            width: 100%;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+        }
+        
+        .verify-btn:hover {
+            background-color: #1ed760;
+        }
+        
+        .learn-more {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .learn-more a {
+            color: #1DB954;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        
+        .learn-more a:hover {
+            text-decoration: underline;
+        }
+        
+        .spotify-logo {
+            text-align: center;
+            margin-top: 30px;
+            color: #1DB954;
+            font-size: 28px;
+        }
+        
+        @media (max-width: 600px) {
+            .verification-box {
+                padding: 20px;
+            }
+            
+            .container {
+                padding: 10px;
+            }
+            
+            h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="sheetid-badge">SheetID | Verification</div>
+            <h1>Spotify®</h1>
+            <p class="subtitle">Tell us about yourself.</p>
+            <p class="subtitle">Enter your name as it appears on your school records. Spotify uses SheetID to verify your eligible student status.</p>
+            <p class="learn-more"><a href="#"><i class="fas fa-info-circle"></i> Learn more here</a></p>
+        </div>
+        
+        <div class="verification-box">
+            <p class="required-note"><em>* Required information</em></p>
+            
+            <form id="verificationForm">
+                <div class="form-group">
+                    <label for="country" class="required">Country*</label>
+                    <select id="country" name="country">
+                        <option value="">Select a country</option>
+                        <option value="Nigeria" selected>Nigeria</option>
+                        <option value="United States">United States</option>
+                        <option value="United Kingdom">United Kingdom</option>
+                        <option value="Canada">Canada</option>
+                        <option value="Australia">Australia</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="school" class="required">School*</label>
+                    <select id="school" name="school" class="error">
+                        <option value="">You must select an organization from the list</option>
+                        <option value="unilag">University of Lagos</option>
+                        <option value="uniben">University of Benin</option>
+                        <option value="unijos">University of Jos</option>
+                    </select>
+                    <div class="error-message"><i class="fas fa-exclamation-circle"></i> You must select an organization from the list</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="firstName" class="required">First name*</label>
+                    <input type="text" id="firstName" name="firstName" class="error" placeholder="Enter your first name">
+                    <div class="error-message"><i class="fas fa-exclamation-circle"></i> Invalid first name</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="lastName" class="required">Last name*</label>
+                    <input type="text" id="lastName" name="lastName" placeholder="Enter your last name">
+                </div>
+                
+                <div class="form-group">
+                    <label for="dob" class="required">Date of birth*</label>
+                    <p style="font-size: 14px; color: #666; margin-bottom: 10px;">Used for verification purposes only</p>
+                    <div class="dob-group">
+                        <select id="month" name="month" class="dob-select error">
+                            <option value="">Month</option>
+                            <option value="01">January</option>
+                            <option value="02">February</option>
+                            <option value="03">March</option>
+                            <option value="04">April</option>
+                        </select>
+                        <select id="year" name="year" class="dob-select error">
+                            <option value="">Year</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <option value="2003">2003</option>
+                        </select>
+                    </div>
+                    <div class="error-message"><i class="fas fa-exclamation-circle"></i> Invalid birth date</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">Email address*</label>
+                    <input type="email" id="email" name="email" class="error" placeholder="Enter your email address">
+                    <div class="error-message"><i class="fas fa-exclamation-circle"></i> Invalid email</div>
+                </div>
+                
+                <div class="checkbox-group">
+                    <div class="checkbox-container">
+                        <input type="checkbox" id="consent" name="consent" class="error">
+                        <label for="consent" class="checkbox-label">
+                            By checking this box and clicking "Next," you consent to the use of your information for verification purposes. Your information may be transferred to the United States and will be treated according to Spotify's privacy policy. We will not sell, rent, or use your information for marketing purposes.
+                        </label>
+                    </div>
+                    <div class="error-message"><i class="fas fa-exclamation-circle"></i> Must be selected to continue</div>
+                    <p class="privacy-note">Your privacy is important to us. Read our <a href="#" style="color: #1DB954;">Privacy Policy</a> for more details.</p>
+                </div>
+                
+                <button type="submit" class="verify-btn">VERIFY MY STUDENT STATUS</button>
+            </form>
+        </div>
+        
+        <div class="spotify-logo">
+            <i class="fab fa-spotify"></i>
+        </div>
+    </div>
+
+    <script>
+        // Form validation
+        document.getElementById('verificationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let isValid = true;
+            
+            // Reset error states
+            document.querySelectorAll('.error').forEach(el => {
+                el.classList.remove('error');
+            });
+            document.querySelectorAll('.error-message').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Check required fields
+            const requiredFields = ['school', 'firstName', 'lastName', 'month', 'year', 'email'];
+            
+            requiredFields.forEach(fieldId => {
+                const field = document.getElementById(fieldId);
+                if (!field.value.trim()) {
+                    field.classList.add('error');
+                    const errorMsg = field.parentElement.querySelector('.error-message');
+                    if (errorMsg) errorMsg.style.display = 'flex';
+                    isValid = false;
+                }
+            });
+            
+            // Check email format
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value && !emailRegex.test(email.value)) {
+                email.classList.add('error');
+                const errorMsg = email.parentElement.querySelector('.error-message');
+                if (errorMsg) errorMsg.style.display = 'flex';
+                isValid = false;
+            }
+            
+            // Check consent checkbox
+            const consent = document.getElementById('consent');
+            if (!consent.checked) {
+                consent.classList.add('error');
+                const errorMsg = consent.parentElement.parentElement.querySelector('.error-message');
+                if (errorMsg) errorMsg.style.display = 'flex';
+                isValid = false;
+            }
+            
+            // If valid, show success message
+            if (isValid) {
+                alert('Verification submitted successfully! Spotify will review your information and notify you via email.');
+                // In a real implementation, you would submit the form data to a server
+            }
+        });
+        
+        // Real-time validation for last name (as shown in second screenshot)
+        document.getElementById('lastName').addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                this.classList.add('error');
+                const errorMsg = this.parentElement.querySelector('.error-message');
+                if (!errorMsg) {
+                    const errorDiv = document.createElement('div');
+                    errorDiv.className = 'error-message';
+                    errorDiv.innerHTML = '<i class="fas fa-exclamation-circle"></i> Invalid last name';
+                    this.parentElement.appendChild(errorDiv);
+                } else {
+                    errorMsg.style.display = 'flex';
+                }
+            } else {
+                this.classList.remove('error');
+                const errorMsg = this.parentElement.querySelector('.error-message');
+                if (errorMsg) errorMsg.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
